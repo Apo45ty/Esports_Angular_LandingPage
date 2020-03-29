@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+<div>
+	<div style="float: left;width: 50%;">
+		<div *ngIf='this._databaseService.loadedData; else elseBlock'>				
+			<ul *ngFor="let matchup of this._databaseService.listData; let i = index" [attr.data-index]="i" class="list-group">
+				<li>
+					<button (click)="selectData(i)" type="button" style="width:100%" class="btn btn-primary">
+					<img src="./assets/images/{{this._databaseService.championData[matchup.champion1]['image']['full']}}"/>
+					<img src="./assets/images/{{this._databaseService.championData[matchup.champion2]['image']['full']}}"/>
+					{{this._databaseService.championData[matchup.champion1].id}} vs {{this._databaseService.championData[matchup.champion2].id}}
+					 <br/>
+					= {{matchup.champion1win}} for first champion. This data is gathered from {{matchup.numberofmatches}} matches. 
+					<br/>
+					On the role of {{matchup.srole}} in the lane {{matchup.lane}}
+					</button>
+				</li>
+			</ul>
+		</div>
+		<ng-template #elseBlock>
+			<br/>
+				<img src="https://i.gifer.com/7YQl.gif"/>
+			<br/>
+		</ng-template>
+	</div>
+	<div style="float: left">
+		<div style="position:fixed;width: 50%">
+			<app-test ></app-test>
+		</div>
+	</div>
+</div>

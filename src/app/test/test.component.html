@@ -1,0 +1,17 @@
+
+<div class="centered" >
+	<div *ngIf='!this._databaseService.loadedData; else elseBlock'>
+		<img src="https://i.gifer.com/7YQl.gif"/>			
+	</div>
+	<ng-template #elseBlock>	
+		<select #option (change)="setGraph(option.value)" class="selectpicker" style="width:100%">
+			<option >XP</option>
+			<option >CS Diff</option>
+			<option >CS</option>
+			<option >Gold</option>
+		</select>
+	</ng-template>
+	<div style="width:100%" id="canvasParrent" >
+		<canvas id="canvas"></canvas>
+	</div>
+</div>
